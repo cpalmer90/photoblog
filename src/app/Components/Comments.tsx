@@ -1,15 +1,15 @@
 import { WEBSITE_URL } from "config";
 
 export default async function Comments({ slug }: { slug: string }) {
-  let comments = [];
-  try {
-    const commentRes = await fetch(`${WEBSITE_URL}/api/comments/${slug}`, {
-      next: { revalidate: 5 },
-    });
-    comments = await commentRes.json();
-  } catch (err) {
-    console.log(err);
-  }
+  // let comments = [];
+  // try {
+  //   const commentRes = await fetch(`${WEBSITE_URL}/api/comments/${slug}`, {
+  //     next: { revalidate: 5 },
+  //   });
+  //   comments = await commentRes.json();
+  // } catch (err) {
+  //   console.log(err);
+  // }
   return (
     <div>
       <form action={`/api/comments/${slug}`} method="POST">
@@ -36,7 +36,7 @@ export default async function Comments({ slug }: { slug: string }) {
       <h3>Comments</h3>
       <ul>
         {/* @ts-ignore*/}
-        {comments.map((comment) => {
+        {/* {comments.map((comment) => {
           return (
             <li key={comment.uuid}>
               {comment.username} says...
@@ -44,7 +44,7 @@ export default async function Comments({ slug }: { slug: string }) {
               {comment.comment}
             </li>
           );
-        })}
+        })} */}
       </ul>
     </div>
   );
