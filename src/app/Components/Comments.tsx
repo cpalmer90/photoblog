@@ -1,11 +1,12 @@
 import { WEBSITE_URL } from "config";
 
 export default async function Comments({ slug }: { slug: string }) {
+  let comments = [];
   try {
     const commentRes = await fetch(`${WEBSITE_URL}/api/comments/${slug}`, {
       next: { revalidate: 5 },
     });
-    const comments = await commentRes.json();
+    comments = await commentRes.json();
   } catch (err) {
     console.log(err);
   }
