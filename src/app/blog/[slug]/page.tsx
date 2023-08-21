@@ -36,7 +36,7 @@
 
 import { format, parseISO } from "date-fns";
 import { allPosts } from "contentlayer/generated";
-
+import Comments from "@/app/Components/Comments";
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
 
@@ -62,6 +62,8 @@ export default function PostLayout({ params }: { params: { slug: string } }) {
         className="[&>*]:mb-3 [&>*:last-child]:mb-0, postlist"
         dangerouslySetInnerHTML={{ __html: post.body.html }}
       />
+      {/*@ts-ignore*/}
+      <Comments slug={params.slug} />
     </article>
   );
 }
