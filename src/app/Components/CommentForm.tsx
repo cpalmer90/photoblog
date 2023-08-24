@@ -3,7 +3,13 @@ import { WEBSITE_URL } from "config";
 import { useRouter } from "next/navigation";
 import React, { useTransition } from "react";
 
-export default function CommentForm({ slug }: { slug: string }) {
+export default function CommentForm({
+  slug,
+  username,
+}: {
+  slug: string;
+  username: string;
+}) {
   const router = useRouter();
 
   const [isPending, startTransition] = useTransition();
@@ -12,8 +18,6 @@ export default function CommentForm({ slug }: { slug: string }) {
     event.preventDefault();
 
     // @ts-ignore
-    const username = event.target.username.value || "annonymous";
-    // @ts-ignore
     const comment = event.target.comment.value;
 
     const formData = new FormData();
@@ -21,11 +25,9 @@ export default function CommentForm({ slug }: { slug: string }) {
     formData.append("comment", comment);
 
     const options = { body: formData, method: "POST" };
-    const res = await fetch(`${WEBSITE_URL}/api/comments/${slug}`, options);
+    const res = await fetch(`/api/comments/${slug}`, options);
     console.log(res);
 
-    // @ts-ignore
-    event.target.username.value = "";
     // @ts-ignore
     event.target.comment.value = "";
 
@@ -38,10 +40,9 @@ export default function CommentForm({ slug }: { slug: string }) {
     <form onSubmit={handleFormSubmit}>
       <label htmlFor="username">Name:</label>
       <br />
-      <input
-        name="username"
-        className="text-white border-2 border-orange-400 bg-slate-500 bg-opacity-40"
-      />
+      <p>
+        Commenting as <strong>{username}</strong>
+      </p>
       <br />
       <br />
       <label htmlFor="comment">Comment:</label>
@@ -50,14 +51,14 @@ export default function CommentForm({ slug }: { slug: string }) {
         name="comment"
         cols={75}
         rows={10}
-        className="text-white border-2 border-orange-400 bg-slate-500 bg-opacity-40"
+        className="text-gray-100 border-2 border-amber-200 bg-green-900 bg-opacity-40 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl rounded-bl-2xl"
       />
       <br />
       <br />
       <button
         type="submit"
         disabled={isPending}
-        className="flex flex-col content-center space-y-4 whitespace-normal   border-2 border-orange-400 bg-slate-500 bg-opacity-40 p-2 hover:bg-orange-700"
+        className="flex flex-col content-center space-y-4 whitespace-normal   border-2 border-amber-200 bg-green-900 bg-opacity-40 p-2 hover:bg-amber-900 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl rounded-bl-2xl"
       >
         {isPending ? "Sending..." : "Post Comment"}
       </button>

@@ -1,5 +1,5 @@
 import "../../globals.css";
 
-export default function Header() {
+export default function Footer() {
   return <div className="footer"></div>;
 }

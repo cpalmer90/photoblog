@@ -1,7 +1,8 @@
 import Link from "next/link";
 import "../../globals.css";
 import Image from "next/image";
-import Logo from "@/../public/cbc.png";
+import Logo from "@/../public/finallogo.png";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
@@ -26,6 +27,10 @@ export default function Header() {
             <Link className="link :hover" href="/blog">
               Blog
             </Link>
+
+            <div>
+              <UserButton afterSignOutUrl="/" />
+            </div>
           </div>
         </div>
       </div>

@@ -26,6 +26,7 @@ import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, Post } from "contentlayer/generated";
 import { PostCard } from "../Components/PostCard/PostCard";
+import GalleryPreview from "../Components/GalleryPreview/Gallerypreview";
 
 export default function Home() {
   const posts = allPosts.sort((a: Post, b: Post) =>
@@ -34,6 +35,9 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-xl py-8">
+      <Link href="/Gallery">
+        <GalleryPreview />
+      </Link>
       <h1 className="mb-8 text-center text-2xl font-black">Blog Entries</h1>
       {posts.map((post: Post, idx: number) => (
         <PostCard key={idx} {...post} />
