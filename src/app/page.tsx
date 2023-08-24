@@ -2,7 +2,7 @@ import "./globals.css";
 
 export default function StartPage() {
   return (
-    <main className="mx-auto">
+    <main className="mx-auto max-w-[50%]">
       <div>
         <h1>
           Welcome to the Clicker Club Blog: A Journey Through Wildlife
