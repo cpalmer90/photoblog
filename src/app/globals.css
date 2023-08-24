@@ -7,6 +7,11 @@
   src: url("../app/Cairo_Play/static/CairoPlay-Bold.ttf");
 }
 
+@font-face {
+  font-family: "RobotoSlab-Medium";
+  src: url("../app/Roboto_Slab/static/RobotoSlab-Medium.ttf");
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -52,6 +57,8 @@ body {
 html {
   margin: 0 auto;
   width: 70%;
+  font-family: "RobotoSlab-Medium";
+  font-weight: 100;
 }
 
 .box {
