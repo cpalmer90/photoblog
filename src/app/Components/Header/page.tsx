@@ -21,7 +21,7 @@ export default function Header() {
           <div></div>
           <h2 className="footer-title">The Clicker Club</h2>
           <div className="links-header-right">
-            <Link className="link :hover" href="/home">
+            <Link className="link :hover" href="/">
               Home
             </Link>
             <Link className="link :hover" href="/blog">
